@@ -2,3 +2,6 @@
 @import "primeng/resources/primeng.css";
 @import "primeflex/primeflex.css";
 @import "primeicons/primeicons.css";
+.full-width-btn {
+  width: 100%;
+}

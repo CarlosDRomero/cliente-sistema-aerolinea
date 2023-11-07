@@ -1,23 +1,97 @@
-<div class="w-30rem">
-  <form [formGroup]="registerForm" class="bg-light">
-    <div class="p-inputgroup">
+
+<div class="flex justify-content-center">
+  <form [formGroup]="registerForm" class="p-2 m-2">
+    <div class=" p-inputgroup mb-2 mt-2">
       <span class="p-inputgroup-addon">
           <i class="pi pi-user"></i>
       </span>
-      <input pInputText placeholder="Username" />
+      <input pInputText formControlName="name" placeholder="Nombre" />
+
     </div>
-    <div class="p-inputgroup">
+    <div
+      *ngIf="(name.dirty || name.touched) && name.invalid"
+      class="ml-4 p-error"
+    >
+      <div *ngIf="name.errors?.['required']">
+        El nombre no puede estar vacio
+      </div>
+      <div *ngIf="name.errors?.['maxlength']">
+        El nombre no puede superar los 70 caracteres
+      </div>
+      <div *ngIf="name.errors?.['pattern']">
+        El nombre no puede contener numeros
+      </div>
+    </div>
+    <div class="p-inputgroup mb-2 mt-2">
         <span class="p-inputgroup-addon">
           <i class="pi pi-envelope"></i>
         </span>
-        <input type="text" pInputText placeholder="Price" />
+        <input type="text" pInputText formControlName="email" placeholder="Correo" />
+        
     </div>
-    <div class="p-inputgroup">
+    <div
+      *ngIf="(email.dirty || email.touched) && email.invalid"
+      class="ml-4 p-error"
+    >
+      <div *ngIf="email.errors?.['required']">
+        Ingrese un correo
+      </div>
+      <div *ngIf="email.errors?.['email']">
+        Este no es un correo válido
+      </div>
+    </div>
+    <div class="p-inputgroup mb-2 mt-2">
         <span class="p-inputgroup-addon">
-          <i class="pi pi-envelope"></i>
+          <i class="pi pi-lock"></i>
         </span>
-        <input type="password" pInputText placeholder="Price" />
+        <p-password class="p-inputgroup-addon" promptLabel="Ingrese una contraseña" placeholder="Contraseña"  [toggleMask]="true" formControlName="password" >
+        <ng-template pTemplate="footer">
+            <p-divider></p-divider>
+            <p class="mt-2">Sugerencias</p>
+            <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                <li>Al menos una letra minuscula</li>
+                <li>Al menos una letra mayuscula o un número</li>
+                <li>Mínimo 6 caracteres</li>
+            </ul>
+        </ng-template>
+        </p-password>
+      </div>
+      <div
+      *ngIf="(password.dirty || password.touched) && password.invalid"
+      class="ml-4 p-error"
+    >
+      <div *ngIf="password.errors?.['required']">
+        Ingrese una contraseña
+      </div>
+      <div *ngIf="password.errors?.['pattern']">
+        La contraseña no cumple con las indicaciones
+      </div>
     </div>
+    <div class=" p-inputgroup mb-2 mt-2">
+      <span class="p-inputgroup-addon">
+        <i class="pi pi-check"></i>
+      </span>
+      <p-password class="p-inputgroup-addon" placeholder="Confirmar contraseña" [toggleMask]="true" [feedback]="false" formControlName="passwordConfirm" >
+      </p-password>
+    </div>
+    
+  <div
+      *ngIf="(passwordConfirm.dirty || passwordConfirm.touched) && passwordConfirm.invalid"
+      class="ml-4 p-error"
+    >
+      <div *ngIf="passwordConfirm.errors?.['required']">
+        Confirme su contraseña
+      </div>
+      <div *ngIf="passwordConfirm.errors?.['confirmedValidator']">
+        Las contraseñas no coinciden
+      </div>
+    </div>
+      <p-button 
+        styleClass="mt-4 w-full"
+        label="Submit"
+        [disabled]="registerForm.invalid"
+        (onClick)="onSubmit()">
+      </p-button>
   </form>
   
 </div>
