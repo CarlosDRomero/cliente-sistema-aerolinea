@@ -20,5 +20,6 @@ export class AuthService {
 
   register(dto: userSignUpDto): Observable<any> {
     return this.http.post<any>(this.signupURL, dto);
+    
   }
 }

@@ -44,7 +44,15 @@
         <span class="p-inputgroup-addon">
           <i class="pi pi-lock"></i>
         </span>
-        <p-password class="p-inputgroup-addon" promptLabel="Ingrese una contraseña" placeholder="Contraseña"  [toggleMask]="true" formControlName="password" >
+        <p-password 
+          promptLabel="Ingrese una contraseña" 
+          placeholder="Contraseña"  
+          [toggleMask]="true" 
+          formControlName="password" 
+          weakLabel="Débil"
+          mediumLabel="Segura"
+          strongLabel="Muy segura"
+        >
         <ng-template pTemplate="footer">
             <p-divider></p-divider>
             <p class="mt-2">Sugerencias</p>
@@ -71,7 +79,7 @@
       <span class="p-inputgroup-addon">
         <i class="pi pi-check"></i>
       </span>
-      <p-password class="p-inputgroup-addon" placeholder="Confirmar contraseña" [toggleMask]="true" [feedback]="false" formControlName="passwordConfirm" >
+      <p-password class="" placeholder="Confirmar contraseña" [toggleMask]="true" [feedback]="false" formControlName="passwordConfirm" >
       </p-password>
     </div>
     
