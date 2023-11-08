@@ -13,6 +13,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { PasswordModule } from 'primeng/password';
+import { DividerModule } from 'primeng/divider';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { PasswordModule } from 'primeng/password';
     InputTextModule,
     CheckboxModule,
     RadioButtonModule,
-    PasswordModule
+    PasswordModule,
+    ButtonModule,
+    DividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
