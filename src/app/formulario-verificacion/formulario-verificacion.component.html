@@ -1,17 +1,28 @@
 
 <div class="card flex justify-content-center">
   
-  <div class="flex flex-column  mt-4 justify-content-center" >
-    <h1>Codigo de verificacion</h1>
-    <span class="p-float-label">
-      <input pInputText id="username" class="w-full" [(ngModel)]="value" />
-      <label htmlFor="username">Codigo</label>
-  </span> </div>
+  <form class="flex flex-column  mt-4 justify-content-center" [formGroup]="formularioCodigo" >
+      <h1>Codigo de verificacion</h1>
+      <span class="p-float-label">
+        <input pInputText id="username" class="w-full" formControlName="codigo" />
+        <label htmlFor="username">Codigo</label>
+      </span> 
+      <div 
+        class="ml-4 p-error"
+        *ngIf="codigo.touched && codigo.invalid"
+        >
+        Error del campo
+      </div>
+  </form>
 </div>
 <div class="card flex justify-content-center">
   <p-button label="Enviar otro correo" [link]="true"></p-button>
 </div>
 <div class="card flex justify-content-center">
-<p-button label="Secondary" [raised]="true" severity="secondary"></p-button>
+<p-button label="Verificar" 
+[raised]="true" severity="secondary" 
+[disabled]="codigo.invalid"
+(onClick)="enviar()"
+></p-button>
 </div>
 

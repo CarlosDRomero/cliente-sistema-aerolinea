@@ -18,7 +18,8 @@ const routes: Routes = [
   },
   {
     path: 'verification',
-    component: FormularioVerificacionComponent
+    component: FormularioVerificacionComponent,
+    data:{email:'c6099020@gmail.com'}
   }
 ];
 

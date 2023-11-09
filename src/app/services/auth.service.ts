@@ -12,6 +12,7 @@ export class AuthService {
 
   authURL = environment.LOGIN_URL!;
   signupURL = environment.SIGNUP_URL!;
+  verifURL = environment.VERIF_URL!;
 
   constructor(private http: HttpClient) { }
   login(dto: UserLoginDto): Observable<any> {
@@ -21,5 +22,12 @@ export class AuthService {
   register(dto: userSignUpDto): Observable<any> {
     return this.http.post<any>(this.signupURL, dto);
     
+  }
+
+  verificar(email: string, codigo: string){
+    return this.http.post(this.verifURL, {
+      email,
+      code: codigo
+    })
   }
 }

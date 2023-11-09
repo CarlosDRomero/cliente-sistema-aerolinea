@@ -66,7 +66,7 @@ export class FormularioRegistroComponent {
     }
     
     const resp = this.authSrice.register(dto).subscribe((res)=>{
-      this.router.navigate(['login']);
+      this.router.navigate(['/verication',email]);
     });
 
     console.log(resp)
