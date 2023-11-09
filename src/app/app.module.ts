@@ -7,7 +7,7 @@ import { FormularioRegistroComponent } from './formulario-registro/formulario-re
 import { FormularioLoginComponent } from './formulario-login/formulario-login.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -15,12 +15,14 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
+import { FormularioVerificacionComponent } from './formulario-verificacion/formulario-verificacion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormularioRegistroComponent,
-    FormularioLoginComponent
+    FormularioLoginComponent,
+    FormularioVerificacionComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { ButtonModule } from 'primeng/button';
     RadioButtonModule,
     PasswordModule,
     ButtonModule,
-    DividerModule
+    DividerModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
