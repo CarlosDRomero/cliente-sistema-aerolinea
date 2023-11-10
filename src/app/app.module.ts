@@ -16,13 +16,27 @@ import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
 import { FormularioVerificacionComponent } from './formulario-verificacion/formulario-verificacion.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtloginComponent } from './buttlogin/buttlogin.component';
+import { BarrabusquedaComponent } from './barrabusqueda/barrabusqueda.component';
+import { CarruselComponent } from './carrusel/carrusel.component';
+import { CarouselModule } from 'primeng/carousel';
+import { TagModule } from 'primeng/tag';
+import { CardModule } from 'primeng/card';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     FormularioRegistroComponent,
     FormularioLoginComponent,
-    FormularioVerificacionComponent
+    FormularioVerificacionComponent,
+    NavbarComponent,
+    ButtloginComponent,
+    BarrabusquedaComponent,
+    CarruselComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +50,13 @@ import { FormularioVerificacionComponent } from './formulario-verificacion/formu
     PasswordModule,
     ButtonModule,
     DividerModule,
-    FormsModule
+    FormsModule,
+    TabMenuModule,
+    SidebarModule,
+    ButtonModule,
+    CarouselModule,
+    TagModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
