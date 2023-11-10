@@ -24,9 +24,8 @@ export class AuthService {
     
   }
 
-  verificar(email: string, codigo: string){
+  verificar(codigo: string){
     return this.http.post(this.verifURL, {
-      email,
       code: codigo
     })
   }

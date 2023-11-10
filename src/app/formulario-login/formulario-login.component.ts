@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { UserLoginDto } from '../models/user-login.model';
 
@@ -9,9 +9,8 @@ import { UserLoginDto } from '../models/user-login.model';
   styleUrls: ['./formulario-login.component.css']
 })
 export class FormularioLoginComponent {
-  constructor(private fb: FormBuilder, private authSrice: AuthService){}
-  
-  registerForm = this.fb.group({
+  constructor(private authSrice: AuthService){}
+  registerForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
   });

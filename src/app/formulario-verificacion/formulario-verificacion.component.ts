@@ -3,22 +3,21 @@ import { FormControl,FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 @Component({
-  selector: 'app-formulario-verificacion',
+  selector: 'app-formulario-two-factoricacion',
   templateUrl: './formulario-verificacion.component.html',
   styleUrls: ['./formulario-verificacion.component.css']
 })
 export class FormularioVerificacionComponent {
-  
-  @Input() email: string = '';
-  constructor(private authService: AuthService){}
+  constructor(
+    private authService: AuthService,
+  ){}
   formularioCodigo = new FormGroup({
     codigo: new FormControl('',[
       Validators.required,
-      Validators.maxLength(6),
-      Validators.minLength(6),
+      Validators.pattern(/^\d{6}$/)
     ])
   })
-
+  
   value: string | undefined ;
 
   get codigo(){
@@ -28,8 +27,7 @@ export class FormularioVerificacionComponent {
     if (this.formularioCodigo.invalid) return;
 
     const codigo = this.formularioCodigo.value.codigo!;
-    console.log(`correo ${this.email}`)
-    this.authService.verificar(this.email,codigo).subscribe((res)=>{
+    this.authService.verificar(codigo).subscribe((res)=>{
       console.log(res)
     });
   }

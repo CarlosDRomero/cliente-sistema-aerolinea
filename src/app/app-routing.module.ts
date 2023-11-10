@@ -19,7 +19,6 @@ const routes: Routes = [
   {
     path: 'verification',
     component: FormularioVerificacionComponent,
-    data:{email:'c6099020@gmail.com'}
   }
 ];
 

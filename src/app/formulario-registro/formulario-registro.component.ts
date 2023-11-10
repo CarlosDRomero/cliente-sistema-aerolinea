@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PasswordConfirm } from '../validators/password-confirm.validator';
 import { AuthService } from '../services/auth.service';
 import { userSignUpDto } from '../models/user-sign-up.dto';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-formulario-registro',
@@ -11,9 +12,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./formulario-registro.component.css']
 })
 export class FormularioRegistroComponent {
-  constructor(private fb: FormBuilder, private authSrice: AuthService, private router: Router){}
-  
-  registerForm = this.fb.group({
+  constructor(private authSrice: AuthService, private router: Router){}
+  registerForm = new FormGroup({
     name: new FormControl('',[
       Validators.required, 
       Validators.maxLength(50),
@@ -46,6 +46,8 @@ export class FormularioRegistroComponent {
   get passwordConfirm(){
     return this.registerForm.controls.passwordConfirm;
   }
+
+
   onSubmit(){
     if (this.registerForm.invalid){
       this.registerForm.markAllAsTouched();
@@ -57,16 +59,16 @@ export class FormularioRegistroComponent {
     const name = formData.name!;
     const email = formData.email!;
     const password = formData.password!;
-    const passwordConfirm = formData.passwordConfirm!;
     const dto: userSignUpDto = {
       name,
       email,
       password,
-      passwordConfirm
     }
     
     const resp = this.authSrice.register(dto).subscribe((res)=>{
-      this.router.navigate(['/verication',email]);
+      //redirigir a otro componente de angular pero con sus respectivos inputs?
+      console.log(res)
+      this.router.navigate(['/verification'])
     });
 
     console.log(resp)
