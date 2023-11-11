@@ -4,6 +4,7 @@ import { PasswordConfirm } from '../validators/password-confirm.validator';
 import { AuthService } from '../services/auth.service';
 import { userSignUpDto } from '../models/user-sign-up.dto';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -12,7 +13,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./formulario-registro.component.css']
 })
 export class FormularioRegistroComponent {
-  constructor(private authSrice: AuthService, private router: Router){}
+  constructor(
+    private authSrice: AuthService, 
+    private cookieService: CookieService,
+    private router: Router
+  ){}
   registerForm = new FormGroup({
     name: new FormControl('',[
       Validators.required, 
@@ -68,6 +73,7 @@ export class FormularioRegistroComponent {
     const resp = this.authSrice.register(dto).subscribe((res)=>{
       //redirigir a otro componente de angular pero con sus respectivos inputs?
       console.log(res)
+      this.cookieService.set('userToken',res.userToken)
       this.router.navigate(['/verification'])
     });
 

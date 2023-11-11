@@ -10,6 +10,6 @@ export class ButtloginComponent {
 constructor(private router: Router){
 }
   redirection(){
-    this.router.navigate(["/login"])
+    this.router.navigate(["/signup"])
   }
 }
