@@ -1,13 +1,15 @@
+// Importaciones base
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
+// Modulos complementarios
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+// Modulos de PrimeNG
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
@@ -20,6 +22,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { TagModule } from 'primeng/tag';
 import { CardModule } from 'primeng/card';
 
+// Componentes creados
 import { FormularioVerificacionComponent } from './formulario-verificacion/formulario-verificacion.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ButtloginComponent } from './buttlogin/buttlogin.component';
