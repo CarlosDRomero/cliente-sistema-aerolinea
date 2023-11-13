@@ -2,8 +2,14 @@ import { Component, Input } from '@angular/core';
 import { FormControl,FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { catchError, throwError } from 'rxjs';
+import { catchError, take, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+
+export enum VerifUseCase{
+  SIGNUP,
+  LOGIN
+}
 @Component({
   selector: 'app-formulario-two-factoricacion',
   templateUrl: './formulario-verificacion.component.html',
@@ -12,6 +18,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class FormularioVerificacionComponent {
   constructor(
     private authService: AuthService,
+    private route: ActivatedRoute
   ){}
   formularioCodigo = new FormGroup({
     codigo: new FormControl('',[
@@ -41,10 +48,13 @@ export class FormularioVerificacionComponent {
   }
   enviar(){
     if (this.formularioCodigo.invalid) return;
-    //how i save information in cookies with angular?
     const codigo = this.formularioCodigo.value.codigo!;
-    //como manejo los errores de una peticion de HttpClient en angular sin que aparezcan por consola?
-    this.authService.verificar(codigo)
+    
+    var useCase!: VerifUseCase;
+    this.route.queryParams.pipe(take(1)).subscribe((params)=>{
+      useCase = params['useCase']
+    })
+    this.authService.verificar(codigo, useCase)
     .pipe(
       catchError(this.handleError)
     )

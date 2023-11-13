@@ -5,6 +5,7 @@ import { AuthService } from '../services/auth.service';
 import { userSignUpDto } from '../models/user-sign-up.dto';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { VerifUseCase } from '../formulario-verificacion/formulario-verificacion.component';
 
 
 @Component({
@@ -71,10 +72,8 @@ export class FormularioRegistroComponent {
     }
     
     const resp = this.authSrice.register(dto).subscribe((res)=>{
-      //redirigir a otro componente de angular pero con sus respectivos inputs?
-      console.log(res)
       this.cookieService.set('userToken',res.userToken)
-      this.router.navigate(['/verification'])
+      this.router.navigate(['/verification',VerifUseCase.SIGNUP])
     });
 
     console.log(resp)

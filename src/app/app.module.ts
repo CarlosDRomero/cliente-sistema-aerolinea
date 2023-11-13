@@ -31,6 +31,7 @@ import { CarruselComponent } from './carrusel/carrusel.component';
 import { FormularioRegistroComponent } from './formulario-registro/formulario-registro.component';
 import { FormularioLoginComponent } from './formulario-login/formulario-login.component';
 import { CookieService } from 'ngx-cookie-service';
+import { PanelfoComponent } from './panelfo/panelfo.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CookieService } from 'ngx-cookie-service';
     ButtloginComponent,
     BarraBusquedaComponent,
     CarruselComponent,
+    PanelfoComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { UserLoginDto } from '../models/user-login.model';
+import { Router } from '@angular/router';
+import { VerifUseCase } from '../formulario-verificacion/formulario-verificacion.component';
 
 @Component({
   selector: 'app-formulario-login',
@@ -9,7 +11,10 @@ import { UserLoginDto } from '../models/user-login.model';
   styleUrls: ['./formulario-login.component.css']
 })
 export class FormularioLoginComponent {
-  constructor(private authSrice: AuthService){}
+  constructor(
+    private authSrice: AuthService,
+    private router: Router
+  ){}
   registerForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
@@ -33,7 +38,9 @@ export class FormularioLoginComponent {
     }
     
     const resp = this.authSrice.login(dto).subscribe((res)=>{
-      console.log(res)
+      if (!res.access_token){
+        this.router.navigate(["/verification",VerifUseCase.LOGIN])
+      }
     });
 
     console.log(resp)

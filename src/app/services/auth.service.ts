@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserLoginDto } from '../models/user-login.model';
 import { environment } from '../environment/environment';
 import { CookieService } from 'ngx-cookie-service';
+import { VerifUseCase } from '../formulario-verificacion/formulario-verificacion.component';
 
 
 @Injectable({
@@ -14,7 +15,8 @@ export class AuthService {
 
   authURL = environment.LOGIN_URL!;
   signupURL = environment.SIGNUP_URL!;
-  verifURL = environment.VERIF_URL!;
+  verifURLS = environment.VERIF_URL_S!;
+  verifURLL = environment.VERIF_URL_L!;
 
   constructor(
     private http: HttpClient,
@@ -30,9 +32,16 @@ export class AuthService {
     
   }
 
-  verificar(codigo: string){
+  verificar(codigo: string, useCase: VerifUseCase){
+    var url;
+    if (useCase==VerifUseCase.SIGNUP){
+      url=this.verifURLS;
+    }else{
+      url=this.verifURLL;
+    }
+
     const userToken = this.cookieService.get('userToken');
-    return this.http.post(this.verifURL, {
+    return this.http.post(this.verifURLS, {
       code: codigo
     },{
       headers:{

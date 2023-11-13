@@ -17,7 +17,7 @@ const routes: Routes = [
     component: FormularioRegistroComponent
   },
   {
-    path: 'verification',
+    path: 'verification/:useCase',
     component: FormularioVerificacionComponent,
   }
 ];
