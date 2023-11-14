@@ -1,8 +1,12 @@
 <div class="card flex justify-content-start">
     <p-sidebar [(visible)]="sidebarVisible">
-        <ng-template pTemplate="header">Header Content</ng-template>
-        <ng-template pTemplate="content">Body Content</ng-template>
-        <ng-template pTemplate="footer">Footer Content</ng-template>
+        <div class="card flex justify-content-center">
+            <p-button label="Mis vuelos" [link]="true" routerLink="misvuelos" routerLinkActive="active-link"></p-button>
+        </div>
+        <div class="card flex justify-content-center">
+            <p-button label="Sugerencias" [link]="true" routerLink="sugerencias" routerLinkActive="active-link"></p-button>
+        </div>
+       
     </p-sidebar>
     <p-button (click)="sidebarVisible = true" icon="pi pi-bars
     "></p-button>

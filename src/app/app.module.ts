@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 // Modulos complementarios
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
 // Modulos de PrimeNG
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -20,7 +19,14 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { SidebarModule } from 'primeng/sidebar';
 import { CarouselModule } from 'primeng/carousel';
 import { TagModule } from 'primeng/tag';
-import { CardModule } from 'primeng/card';
+import {CardModule} from 'primeng/card';
+import { CalendarModule } from 'primeng/calendar';
+import { FieldsetModule } from 'primeng/fieldset';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { DataViewModule } from 'primeng/dataview';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { ImageModule } from 'primeng/image';
+
 
 // Componentes creados
 import { FormularioVerificacionComponent } from './formulario-verificacion/formulario-verificacion.component';
@@ -32,6 +38,11 @@ import { FormularioRegistroComponent } from './formulario-registro/formulario-re
 import { FormularioLoginComponent } from './formulario-login/formulario-login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { PanelfoComponent } from './panelfo/panelfo.component';
+import { MisVuelosComponent } from './mis-vuelos/mis-vuelos.component';
+import { BuscadorCiudadComponent } from './buscador-ciudad/buscador-ciudad.component';
+import { SugerenciasComponent } from './sugerencias/sugerencias.component';
+import { TabViewModule } from 'primeng/tabview';
+import { InfoVueloComponent } from './info-vuelo/info-vuelo.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +55,10 @@ import { PanelfoComponent } from './panelfo/panelfo.component';
     BarraBusquedaComponent,
     CarruselComponent,
     PanelfoComponent,
+    MisVuelosComponent,
+    BuscadorCiudadComponent,
+    SugerenciasComponent,
+    InfoVueloComponent
   ],
   imports: [
     BrowserModule,
@@ -60,11 +75,18 @@ import { PanelfoComponent } from './panelfo/panelfo.component';
     FormsModule,
     TabMenuModule,
     SidebarModule,
-    ButtonModule,
     CarouselModule,
     TagModule,
-    CardModule
+    CardModule,
+    CalendarModule,
+    FieldsetModule,
+    AutoCompleteModule,
+    DataViewModule,
+    InputNumberModule,
+    TabViewModule,
+    ImageModule
   ],
+
   providers: [CookieService],
   bootstrap: [AppComponent]
 })

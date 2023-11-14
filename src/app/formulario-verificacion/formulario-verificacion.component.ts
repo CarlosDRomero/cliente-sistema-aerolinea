@@ -4,7 +4,7 @@ import { Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { catchError, take, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export enum VerifUseCase{
   SIGNUP,
@@ -16,10 +16,19 @@ export enum VerifUseCase{
   styleUrls: ['./formulario-verificacion.component.css']
 })
 export class FormularioVerificacionComponent {
+  
+  navigations =[
+    "/login",
+    ""
+  ]
+  
   constructor(
     private authService: AuthService,
+    private router: Router,
     private route: ActivatedRoute
   ){}
+
+
   formularioCodigo = new FormGroup({
     codigo: new FormControl('',[
       Validators.required,
@@ -51,7 +60,9 @@ export class FormularioVerificacionComponent {
     const codigo = this.formularioCodigo.value.codigo!;
     
     var useCase!: VerifUseCase;
-    this.route.queryParams.pipe(take(1)).subscribe((params)=>{
+    this.route.params.pipe().subscribe((params)=>{
+      console.log(params)
+      console.log(params['useCase'])
       useCase = params['useCase']
     })
     this.authService.verificar(codigo, useCase)
@@ -59,7 +70,10 @@ export class FormularioVerificacionComponent {
       catchError(this.handleError)
     )
     .subscribe((res)=>{
-      console.log(res)
+      console.log("Routes: "+useCase)
+
+      console.log(this.navigations[useCase])
+      this.router.navigate([this.navigations[useCase]])
     });
   }
 }

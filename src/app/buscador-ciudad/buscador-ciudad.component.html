@@ -1,0 +1,13 @@
+
+<p-autoComplete [(ngModel)]="selectedItem" [suggestions]="sug"
+    (completeMethod)="search($event)" (onSelect)="updateSelected()" field="city_name">
+    <ng-template let-ciudad pTemplate="item">
+        <div class="flex align-items-center gap-2">
+            <img 
+            src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+            [class]="'fi fi-' + ciudad.country_code.toLowerCase()" style="width: 18px"/>
+            <div>{{ ciudad.city_name }}</div>
+        </div>
+    </ng-template>
+    
+</p-autoComplete>

@@ -1,0 +1,40 @@
+<style>
+    .card {
+      background-color: #393939; 
+      width: 800px; 
+      height: 300px; 
+      padding: 50px; 
+      border-radius: 10px; 
+      display: flex;
+      align-items: center; 
+      justify-content: space-between; 
+    }
+  
+    .text-box {
+      width: 150px; 
+      margin-bottom: 40px; 
+    }
+  </style>
+  
+  <div class="card">
+    <div class="column">
+      <input class="text-box" id="disabled-input1" type="text" pInputText [disabled]="true" [(ngModel)]="value1" />
+      <input class="text-box" id="disabled-input2" type="text" pInputText [disabled]="true" [(ngModel)]="value2" />
+      <input class="text-box" id="disabled-input3" type="text" pInputText [disabled]="true" [(ngModel)]="value3" />
+    </div>
+    
+    <p-divider layout="vertical"></p-divider>
+    
+    <div class="column">
+      <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image" width="150"></p-image>
+      <input class="text-box" id="disabled-input2" type="text" pInputText [disabled]="true" [(ngModel)]="value7" />
+      <input class="text-box" id="disabled-input3" type="text" pInputText [disabled]="true" [(ngModel)]="value8" />
+    </div>
+      <p-divider layout="vertical"></p-divider>
+      <div class="column">
+        <input class="text-box" id="disabled-input1" type="text" pInputText [disabled]="true" [(ngModel)]="value4" />
+        <input class="text-box" id="disabled-input2" type="text" pInputText [disabled]="true" [(ngModel)]="value5" />
+        <input class="text-box" id="disabled-input3" type="text" pInputText [disabled]="true" [(ngModel)]="value6" />
+      </div>
+    </div>
+  
