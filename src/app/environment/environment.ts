@@ -1,5 +1,5 @@
-// const server_host ='http://localhost:3000'
-const server_host ='https://wqb8p1ls-3000.use.devtunnels.ms' 
+ const server_host ='http://localhost:3000'
+//const server_host ='https://wqb8p1ls-3000.use.devtunnels.ms' 
 
 export const environment = {
   SIGNUP_URL:server_host+'/users/signup',

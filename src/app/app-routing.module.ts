@@ -7,6 +7,7 @@ import {MisVuelosComponent} from './mis-vuelos/mis-vuelos.component';
 import { SugerenciasComponent } from './sugerencias/sugerencias.component';
 
 import { AppComponent } from './app.component';
+import { PanelfoComponent } from './panelfo/panelfo.component';
 
 
 
@@ -38,6 +39,9 @@ const routes: Routes = [
   },
   {
     path: 'sugerencias', component: SugerenciasComponent
+  },
+  {
+    path: 'panelfo', component: PanelfoComponent
   }
 ];
 
