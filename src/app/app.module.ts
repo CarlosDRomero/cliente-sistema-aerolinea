@@ -26,6 +26,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { DataViewModule } from 'primeng/dataview';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ImageModule } from 'primeng/image';
+import { TableModule } from 'primeng/table';
+import { PanelModule } from 'primeng/panel';
 
 
 // Componentes creados
@@ -84,7 +86,9 @@ import { InfoVueloComponent } from './info-vuelo/info-vuelo.component';
     DataViewModule,
     InputNumberModule,
     TabViewModule,
-    ImageModule
+    ImageModule,
+    TableModule,
+    PanelModule
   ],
 
   providers: [CookieService],

@@ -40,5 +40,5 @@ export class PanelfoComponent {
     fechaActual.setDate(fechaActual.getDate() + 15);
     return fechaActual;
   }
-  value2: number = 0;
+  value2: number = 1;
 }

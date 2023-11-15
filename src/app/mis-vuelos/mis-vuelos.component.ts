@@ -1,33 +1,28 @@
 import { Component } from '@angular/core';
-
-
+import { VueloModel } from '../models/vuelo.models';
+import { VuelosService } from '../services/vuelos.service';
 @Component({
   selector: 'app-mis-vuelos',
   templateUrl: './mis-vuelos.component.html',
   styleUrls: ['./mis-vuelos.component.css']
 })
 export class MisVuelosComponent {
-  products!: any[];
+//   products!: any[]  ;
+  vuelos: VueloModel[] = [];
 
-  // constructor(private productService: any) {}
-
+  constructor(private servicevuelos: VuelosService ) {}
+   
   ngOnInit() {
-      // this.productService.getProducts().then((data) => (this.products = data.slice(0, 5)));
-  }
-
-  getSeverity (product: any) {
-      switch (product.inventoryStatus) {
-          case 'INSTOCK':
-              return 'success';
-
-          case 'LOWSTOCK':
-              return 'warning';
-
-          case 'OUTOFSTOCK':
-              return 'danger';
-
-          default:
-              return null;
+    this.servicevuelos.getMisVuelos().then(
+      (res) =>{
+        this.vuelos = res;
+        console.log(this.vuelos)
       }
-  };
+    );
+  }
 }
+
+
+
+  
+

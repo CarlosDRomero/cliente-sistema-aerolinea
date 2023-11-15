@@ -1,17 +1,28 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import { VueloModel } from '../models/vuelo.models';
+import { VuelosService } from '../services/vuelos.service';
 @Component({
   selector: 'app-info-vuelo',
   templateUrl: './info-vuelo.component.html',
   styleUrls: ['./info-vuelo.component.css']
 })
 export class InfoVueloComponent {
-  value1: string = 'origen';
-  value2: string = 'aeropuerto';
-  value3: string = 'pais';
-  value4: string = 'destino';
-  value5: string = 'aeropuerto';
-  value6: string = 'pais';
-  value7: string = 'precio';
-  value8: string = 'moneda';
+  @Input() vuelo!: VueloModel;
+
+  origenTexto: string = '';
+  origenPais: string = '';
+  aeropuertoO: string = '';
+
+  destinoTexto: string = '';
+  destinoPais: string = '';
+  aeropuertoD: string = '';
+
+  precioVuelo: string = '';
+
+  constructor(private servicevuelos: VuelosService ) {}
+   
+  ngOnInit() {
+    // console.log(this.vuelo)
+  }
+ 
 }

@@ -12,7 +12,7 @@ import { VerifUseCase } from '../formulario-verificacion/formulario-verificacion
 })
 export class FormularioLoginComponent {
   constructor(
-    private authSrice: AuthService,
+    private authService: AuthService,
     private router: Router
   ){}
   registerForm = new FormGroup({
@@ -37,10 +37,12 @@ export class FormularioLoginComponent {
       password,
     }
     
-    const resp = this.authSrice.login(dto).subscribe((res)=>{
+    const resp = this.authService.login(dto).subscribe((res)=>{
       if (!res.access_token){
         this.router.navigate(["/verification",VerifUseCase.LOGIN])
+        return;
       }
+      console.log(res.access_token)
     });
 
     console.log(resp)

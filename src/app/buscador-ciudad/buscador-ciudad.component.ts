@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { FlightSearchService } from '../services/flight-search.service';
+import { VuelosService } from '../services/vuelos.service';
 import { CiudadModel } from '../models/ciudades.model';
 interface AutoCompleteCompleteEvent {
   originalEvent: Event;
@@ -13,7 +13,7 @@ interface AutoCompleteCompleteEvent {
   styleUrls: ['./buscador-ciudad.component.css']
 })
 export class BuscadorCiudadComponent {
-  constructor(private flightSearchService: FlightSearchService) {}
+  constructor(private flightSearchService: VuelosService) {}
 
   @Input() selectedItem: CiudadModel | undefined;
   @Output() selectedItemChange = new EventEmitter<CiudadModel>;

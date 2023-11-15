@@ -71,7 +71,7 @@ export class FormularioVerificacionComponent {
     )
     .subscribe((res)=>{
       console.log("Routes: "+useCase)
-
+       
       console.log(this.navigations[useCase])
       this.router.navigate([this.navigations[useCase]])
     });
