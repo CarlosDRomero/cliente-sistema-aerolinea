@@ -24,5 +24,6 @@ export class InfoVueloComponent {
   ngOnInit() {
     // console.log(this.vuelo)
   }
- 
+
+
 }

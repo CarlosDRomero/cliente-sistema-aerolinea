@@ -7,6 +7,7 @@ export enum TipoVuelo{
   'FIRST'
 }
 export class VueloModel{
+  uuid?:string
   id?: string
   origen?: CiudadModel;
   destino?: CiudadModel;
@@ -15,7 +16,6 @@ export class VueloModel{
   precio?: number;
   duracion?: string;
   fecha_ida?: Date
-  hora_salida?: string;
   fecha_vuelta?: Date
   codigo_aerolinea?:string
   nombre_aerolinea?: string

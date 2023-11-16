@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { VuelosService } from '../services/vuelos.service';
 import { CiudadModel } from '../models/ciudades.model';
+import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 interface AutoCompleteCompleteEvent {
   originalEvent: Event;
   query: string;
@@ -12,18 +13,31 @@ interface AutoCompleteCompleteEvent {
   templateUrl: './buscador-ciudad.component.html',
   styleUrls: ['./buscador-ciudad.component.css']
 })
-export class BuscadorCiudadComponent {
-  constructor(private flightSearchService: VuelosService) {}
+export class BuscadorCiudadComponent{
 
-  @Input() selectedItem: CiudadModel | undefined;
-  @Output() selectedItemChange = new EventEmitter<CiudadModel>;
-  items: any[] | undefined;
+  @Input() ciudadSeleccionada?: CiudadModel;
+  @Output() ciudadSeleccionadaChange = new EventEmitter<CiudadModel>();
+  public ciudades = new BehaviorSubject<CiudadModel[]>([]);
+  private onTouchedCallback: () => void = () => {};
+  private onChangeCallback: (_: any) => void = () => {};
+
+  ngOnInit(): void {}
+  writeValue(obj: any): void {
+    if (this.ciudadSeleccionada !== obj) {
+      this.ciudadSeleccionada = obj;
+      this.ciudadSeleccionadaChange.emit(this.ciudadSeleccionada);
+    }
+  }
+
+
+
+  constructor(private flightSearchService: VuelosService) {}
+  @Input() placeholder: string = '';
 
   suggestions = new BehaviorSubject<any[]>([]);
-
   
   updateSelected(){
-    this.selectedItemChange.emit(this.selectedItem)
+    this.ciudadSeleccionadaChange.emit(this.ciudadSeleccionada)
   }
   get sug() {
     return this.suggestions.value;
@@ -32,9 +46,9 @@ export class BuscadorCiudadComponent {
     
     console.log(`${event.query}`);
     const a = this.flightSearchService.searchFlightByCity(event.query).subscribe((res: any) => {
+      console.log(res)
       console.log(this.suggestions.value);
-      console.log(res.results);
-      this.suggestions.next(res.results.map((res: any) => res));
+      this.suggestions.next(res.map((res: any) => res));
     });
     
   }

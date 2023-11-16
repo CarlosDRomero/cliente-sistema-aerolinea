@@ -6,30 +6,41 @@ import { FormularioVerificacionComponent } from './formulario-verificacion/formu
 import {MisVuelosComponent} from './mis-vuelos/mis-vuelos.component';
 import { SugerenciasComponent } from './sugerencias/sugerencias.component';
 
-import { AppComponent } from './app.component';
-import { PanelfoComponent } from './panelfo/panelfo.component';
+import { FormulariosUsuarioComponent } from './formularios-usuario/formularios-usuario.component';
+import { PaginaInicioComponent } from './pages/pagina-inicio/pagina-inicio.component';
 
 
 
 //que es pathmatch en las rutas de angular?
 const routes: Routes = [
-  // {
-  //   path:'',
-  //   redirectTo:'/home',
-  //   pathMatch:'full'
-  // },
+  {
+    path:'',
+    redirectTo:'/home',
+    pathMatch:'full'
+  },
   // {
   //   path:'home',
   //   component:AppComponent
   // },
   {
-    path: 'login',
-    component: FormularioLoginComponent
+    path: 'userforms',
+    component: FormulariosUsuarioComponent,
   },
   {
-    path: 'signup',
-    component: FormularioRegistroComponent
+    path: 'forms',
+    component: FormulariosUsuarioComponent,
+    children:[
+      {
+        path: 'signup',
+        component: FormularioRegistroComponent
+      },
+      {
+        path: 'login',
+        component: FormularioLoginComponent
+      },
+    ]
   },
+  
   {
     path: 'verification/:useCase',
     component: FormularioVerificacionComponent
@@ -41,7 +52,7 @@ const routes: Routes = [
     path: 'sugerencias', component: SugerenciasComponent
   },
   {
-    path: 'panelfo', component: PanelfoComponent
+    path: 'home', component: PaginaInicioComponent
   }
 ];
 

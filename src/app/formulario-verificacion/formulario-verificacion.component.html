@@ -2,16 +2,16 @@
 <div class="card flex justify-content-center">
   
   <form class="flex flex-column  mt-4 justify-content-center" [formGroup]="formularioCodigo" >
-      <h1>Codigo de two-factoricacion</h1>
+      <h1>Codigo de verificacion</h1>
       <span class="p-float-label">
-        <input pInputText id="username" class="w-full" formControlName="codigo" />
-        <label htmlFor="username">Codigo</label>
+        <input pInputText id="number" class="w-full" formControlName="codigo" />
+        <label htmlFor="number">Codigo</label>
       </span> 
       <div 
         class="ml-4 p-error"
         *ngIf="codigo.touched && codigo.invalid"
         >
-        Error del campo
+        Escriba el código de 6 dígitos
       </div>
   </form>
 </div>
@@ -19,6 +19,6 @@
   <p-button label="Enviar otro correo" [link]="true"></p-button>
 </div>
 <div class="card flex justify-content-center">
-<p-button label="two-factoricar" [raised]="true" severity="secondary" [disabled]="codigo.invalid"(onClick)="enviar()"></p-button>
+<p-button label="verificar" [raised]="true" severity="secondary" [disabled]="codigo.invalid"(onClick)="enviar()"></p-button>
 </div>
 

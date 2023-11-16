@@ -1,14 +1,22 @@
 <div class="card flex justify-content-start">
     <p-sidebar [(visible)]="sidebarVisible">
-        <div class="card flex justify-content-center">
-            <p-button label="Mis vuelos" [link]="true" routerLink="misvuelos" routerLinkActive="active-link"></p-button>
-        </div>
-        <div class="card flex justify-content-center">
-            <p-button label="Sugerencias" [link]="true" routerLink="sugerencias" routerLinkActive="active-link"></p-button>
-        </div>
-        <div class="card flex justify-content-center">
-            <p-button label="Buscar Vuelos" [link]="true" routerLink="panelfo" routerLinkActive="active-link"></p-button>
-        </div>
+        <ng-template pTemplate="header">
+            <h2>Menu</h2>
+        </ng-template>
+        <ng-template pTemplate="content">
+            <div class="flex flex-column p-2">
+
+                <div class="card flex">
+                    <p-button label="Buscar Vuelos" (click)="sidebarVisible=false" [link]="true" routerLink="home" routerLinkActive="active-link"></p-button>
+                </div>
+                <div class="card flex">
+                    <p-button label="Mis vuelos" (click)="sidebarVisible=false" [link]="true" routerLink="misvuelos" routerLinkActive="active-link"></p-button>
+                </div>
+                <div class="card flex">
+                    <p-button label="Sugerencias" (click)="sidebarVisible=false" [link]="true" routerLink="sugerencias" routerLinkActive="active-link"></p-button>
+                </div>
+            </div>
+        </ng-template>
        
     </p-sidebar>
     <p-button (click)="sidebarVisible = true" icon="pi pi-bars

@@ -1,0 +1,17 @@
+<div *ngIf="vuelos.length === 0">
+  <h3>No hay vuelos disponibles</h3>
+</div>
+<p-scrollPanel [style]="{ width: '100%', height: '350px' }">
+  <div *ngIf="vuelos.length > 0">
+    <p-dataView [value]="vuelos" [layout]="'list'" [paginator]="true" [rows]="rows" [first]="first"
+    (onPage)="onPageChange($event)">
+      <ng-template let-vuelo pTemplate="listItem">
+        <div class="col-12">
+          <div class="flex flex-column justify-content-center w-full p-4">
+              <app-info-vuelo [vuelo]="vuelo"></app-info-vuelo>
+          </div>
+        </div>
+      </ng-template>
+    </p-dataView>
+  </div>
+</p-scrollPanel>

@@ -1,3 +1,4 @@
+<form [formGroup]="VuelosForm" class="p-2">
 <div class="card flex justify-content-center">
     <p-fieldset>
         <ng-template pTemplate="header">
@@ -9,41 +10,74 @@
 
         <div class="flex">
             <div class="flex-initial">
-                <p-button class="flex align-items-center justify-content-center bg-primary font-bold m-1 px-0.5 py-0.5 border-round" label="Solo Ida" (click)="seleccionarSoloIda()"></p-button>
+                <p-button
+                    class="flex align-items-center justify-content-center bg-secondary font-bold mr-1 ml-1 px-0.5 py-0.5 border-round"
+                    label="Solo Ida" [severity]="SoloIda? 'secondary':'primary'" (click)="seleccionarSoloIda()" [disabled]="SoloIda"></p-button>
             </div>
             <div class="flex-initial">
-                <p-button class="flex align-items-center justify-content-center bg-primary font-bold m-1 px-0.5 py-0.5 border-round" label="Ida y Vuelta" (click)="seleccionarIdaYVuelta()"></p-button>
+                <p-button
+                    class="flex align-items-center justify-content-center bg-secondary font-bold mr-1 ml-1 px-0.5 py-0.5 border-round"
+                    label="Ida y Vuelta" [severity]="IdaYVuelta? 'secondary':'primary'" (click)="seleccionarIdaYVuelta()" [disabled]="IdaYVuelta"></p-button>
             </div>
+            <h5>{{ IdaYVuelta? 'Ida y vuelta':'Solo ida' }}</h5>
         </div>
-
+        <p-divider></p-divider>
         <div class="flex align-items-center justify-content-center font-bold m-2 px-0.7 py-0.7 border-round">
             <div class="flex-initial">
-                <app-buscador-ciudad [(selectedItem)]="origen"></app-buscador-ciudad>
+                <app-buscador-ciudad [(ciudadSeleccionada)]="origen" [placeholder]='"Origen"'></app-buscador-ciudad>
             </div>
             <div class="flex">
-                <p-button icon="pi pi-arrow-right-arrow-left" (click)="intercambiar()" class="m-1 px-0.5 py-0.5 border-round"></p-button>
+                <p-button icon="pi pi-arrow-right-arrow-left" (click)="intercambiar()"
+                    class="m-1 px-0.5 py-0.5 border-round"></p-button>
             </div>
             <div class="flex-initial">
-                <app-buscador-ciudad [(selectedItem)]="destino"></app-buscador-ciudad>
+                <app-buscador-ciudad [(ciudadSeleccionada)]="destino" [placeholder]='"Destino"'></app-buscador-ciudad>
             </div>
         </div>
 
-        <div class="flex align-items-center justify-content-left font-bold m-2 px-0.7 py-0.7 border-round" *ngIf="SoloIda">
-            <p-calendar [(ngModel)]="fecha" ></p-calendar>
-        </div>
-        
-        <div class="flex align-items-center justify-content-left font-bold m-2 px-0.7 py-0.7 border-round" *ngIf="IdaYVuelta">
-            <p-calendar [(ngModel)]="fechasRango" selectionMode="range"></p-calendar>
+        <div class="flex align-items-center justify-content-left font-bold m-2 px-0.7 py-0.7 border-round"
+            *ngIf="SoloIda">
+            <p-calendar [readonlyInput]="true" [showIcon]="true" [placeholder]='"Fecha"' formControlName="fechaida" dateFormat="yy-mm-dd"></p-calendar>
         </div>
 
-        <div class="flex   align-items-center justify-content-leftfont-bold m-2 px-0.7 py-0.7 border-round">
-            <span class="p-fluid">
-                <p-inputNumber  class="w-5"[(ngModel)]="value2" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="1" [max]="9"></p-inputNumber>
-            </span>
+        <div class="flex align-items-center justify-content-left font-bold m-2 px-0.7 py-0.7 border-round"
+            *ngIf="IdaYVuelta">
+            <p-calendar [readonlyInput]="true" selectionMode="range" rangeSeparator=" | " [showIcon]="true" [placeholder]='"Fecha ida | Fecha vuelta"' dateFormat="yy-mm-dd" formControlName="fechaidavuelta"></p-calendar>
         </div>
 
+        <div class="flex   align-items-center justify-content-leftfont-bold m-2 px-0.7 py-0.7 border-round pt-5">
+            <div class="card flex justify-content-center">
+                <p-overlayPanel #op>
+                    <ng-template pTemplate="content">
+                        <span class="p-fluid">
+                            <label class="mb-2 block font-bold" for="botadult">Adultos</label>
+                            <p-inputNumber class="w-5" mode="decimal" [showButtons]="true"
+                                inputId="botadult" [min]="1" [max]="maxAdults" formControlName="adultos"></p-inputNumber>
+                        </span>
+                        <span class="p-fluid">
+                            <label class="mb-2 block font-bold" for="botniñ">Niños</label>
+                            <p-inputNumber class="w-5" mode="decimal" [showButtons]="true"
+                                inputId="botch" [min]="0" [max]="maxChildren" formControlName="niños"></p-inputNumber>
+                        </span>
+                        <span class="p-fluid">
+                            <label class="mb-2 block font-bold" for="botbb">Bebes</label>
+                            <p-inputNumber class="w-5" mode="decimal" [showButtons]="true"
+                                inputId="botin" [min]="0" [max]="maxInfants" formControlName="bebes"></p-inputNumber>
+                        </span>
+                    </ng-template>
+                </p-overlayPanel>
+                <p-button (click)="op.toggle($event)" icon="pi pi-user-plus" label="Pasajeros"></p-button>
+            </div>
+        </div>
         <div class="card flex justify-content-center">
-            <p-button label="Buscar"></p-button>
+            <p-button label="Buscar" (onClick)="onSubmit()"></p-button>
         </div>
     </p-fieldset>
+    
+</div>
+</form>
+<div  class="flex justify-content-center w-screen">
+
+    <p-progressSpinner *ngIf="cargando"></p-progressSpinner>
+    <app-lista-vuelos *ngIf="!cargando" [vuelos]="vuelos.value"></app-lista-vuelos>
 </div>
