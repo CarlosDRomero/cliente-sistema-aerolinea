@@ -18,7 +18,7 @@ export enum VerifUseCase{
 export class FormularioVerificacionComponent {
   
   navigations =[
-    "/login",
+    "forms/login",
     ""
   ]
   

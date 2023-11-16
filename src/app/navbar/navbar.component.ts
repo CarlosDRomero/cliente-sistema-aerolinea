@@ -8,5 +8,5 @@ import { MenuItem } from 'primeng/api';
 })
 export class NavbarComponent {
     sidebarVisible: boolean = false;
-
+  
 }

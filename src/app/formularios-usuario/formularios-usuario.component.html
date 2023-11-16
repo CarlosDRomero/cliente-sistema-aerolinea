@@ -1,0 +1,26 @@
+
+<div class="flex justify-content-center">
+  
+  <div class="flex flex-column justify-content-center w-6">
+    <p-tabMenu class="p-element" [model]="items" [activeItem]="activeItem" (activeItemChange)="onActiveItemChange($event)"></p-tabMenu>
+    <div class="flex flex-column order-0 border-round-bottom p-2 border-1 border-200" style="background-color: #2a323d;">
+      <div class="flex justify-content-center">
+        
+        <div class="grid card grid-nogutter justify-content-center align-content-center">
+          <p-avatar icon="pi pi-user" styleClass="m-1" shape="circle" size="large"></p-avatar>
+        </div>
+        <h3>{{ activeItem?.label }}</h3>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+        <!-- 
+      </div>
+      <p-tabPanel [header]="tabItems[0]">
+        <app-formulario-login></app-formulario-login>
+      </p-tabPanel>
+      <p-tabPanel [header]="tabItems[1]">
+        <app-formulario-registro></app-formulario-registro>
+      </p-tabPanel>
+    </p-tabView> -->
+  </div>
+</div>

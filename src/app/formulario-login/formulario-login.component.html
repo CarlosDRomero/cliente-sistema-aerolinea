@@ -1,25 +1,25 @@
-<div class="flex justify-content-center">
-  <form [formGroup]="registerForm" class="p-2 m-2">
-    <div class="p-inputgroup mb-2 mt-2">
-        <span class="p-inputgroup-addon">
-          <i class="pi pi-envelope"></i>
-        </span>
-        <input type="text" pInputText formControlName="email" placeholder="Correo" />
-        
+
+
+
+<form [formGroup]="registerForm" class="p-2">
+  <div class="p-inputgroup mb-2 mt-2">
+      <span class="p-inputgroup-addon">
+        <i class="pi pi-envelope"></i>
+      </span>
+      <input type="text" pInputText formControlName="email" placeholder="Correo" />
+      
+  </div>
+  <div class="p-inputgroup mb-2 mt-2">
+      <span class="p-inputgroup-addon">
+        <i class="pi pi-lock"></i>
+      </span>
+      <p-password promptLabel="Ingrese una contraseña" placeholder="Contraseña"  [toggleMask]="true" formControlName="password" [feedback]="false">
+      </p-password>
     </div>
-    <div class="p-inputgroup mb-2 mt-2">
-        <span class="p-inputgroup-addon">
-          <i class="pi pi-lock"></i>
-        </span>
-        <p-password promptLabel="Ingrese una contraseña" placeholder="Contraseña"  [toggleMask]="true" formControlName="password" >
-        </p-password>
-      </div>
-    
-      <p-button 
-        styleClass="mt-4 w-full"
-        label="Entrar"
-        (onClick)="onSubmit()">
-      </p-button>
-  </form>
   
-</div>
+    <p-button 
+      styleClass="mt-4 w-full"
+      label="Entrar"
+      (onClick)="onSubmit()">
+    </p-button>
+</form>

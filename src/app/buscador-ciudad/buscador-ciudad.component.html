@@ -1,6 +1,6 @@
 
-<p-autoComplete [(ngModel)]="selectedItem" [suggestions]="sug"
-    (completeMethod)="search($event)" (onSelect)="updateSelected()" field="city_name">
+<p-autoComplete [(ngModel)]="ciudadSeleccionada" [suggestions]="sug"
+    (completeMethod)="search($event)" (onSelect)="updateSelected()" field="city_name" [placeholder]="placeholder">
     <ng-template let-ciudad pTemplate="item">
         <div class="flex align-items-center gap-2">
             <img 

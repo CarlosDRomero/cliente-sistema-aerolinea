@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { UserLoginDto } from '../models/user-login.model';
 import { Router } from '@angular/router';
 import { VerifUseCase } from '../formulario-verificacion/formulario-verificacion.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-formulario-login',
@@ -13,7 +14,8 @@ import { VerifUseCase } from '../formulario-verificacion/formulario-verificacion
 export class FormularioLoginComponent {
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ){}
   registerForm = new FormGroup({
     email: new FormControl(''),
@@ -42,7 +44,9 @@ export class FormularioLoginComponent {
         this.router.navigate(["/verification",VerifUseCase.LOGIN])
         return;
       }
-      console.log(res.access_token)
+      this.cookieService.deleteAll();
+      this.cookieService.set("sessionToken",res.access_token)
+      this.router.navigate(["/home"])
     });
 
     console.log(resp)

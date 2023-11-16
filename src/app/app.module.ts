@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
 
 // Modulos complementarios
 import { HttpClientModule } from '@angular/common/http';
@@ -28,7 +30,10 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { ImageModule } from 'primeng/image';
 import { TableModule } from 'primeng/table';
 import { PanelModule } from 'primeng/panel';
-
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { TabViewModule } from 'primeng/tabview';
+import { PaginatorModule } from 'primeng/paginator';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 // Componentes creados
 import { FormularioVerificacionComponent } from './formulario-verificacion/formulario-verificacion.component';
@@ -43,8 +48,11 @@ import { PanelfoComponent } from './panelfo/panelfo.component';
 import { MisVuelosComponent } from './mis-vuelos/mis-vuelos.component';
 import { BuscadorCiudadComponent } from './buscador-ciudad/buscador-ciudad.component';
 import { SugerenciasComponent } from './sugerencias/sugerencias.component';
-import { TabViewModule } from 'primeng/tabview';
 import { InfoVueloComponent } from './info-vuelo/info-vuelo.component';
+import { ListaVuelosComponent } from './lista-vuelos/lista-vuelos.component';
+import { FormulariosUsuarioComponent } from './formularios-usuario/formularios-usuario.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { PaginaInicioComponent } from './pages/pagina-inicio/pagina-inicio.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +68,10 @@ import { InfoVueloComponent } from './info-vuelo/info-vuelo.component';
     MisVuelosComponent,
     BuscadorCiudadComponent,
     SugerenciasComponent,
-    InfoVueloComponent
+    InfoVueloComponent,
+    ListaVuelosComponent,
+    FormulariosUsuarioComponent,
+    PaginaInicioComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +99,13 @@ import { InfoVueloComponent } from './info-vuelo/info-vuelo.component';
     TabViewModule,
     ImageModule,
     TableModule,
-    PanelModule
+    PanelModule,
+    AvatarModule,
+    AvatarGroupModule,
+    OverlayPanelModule,
+    PaginatorModule,
+    ProgressSpinnerModule,
+    ScrollPanelModule
   ],
 
   providers: [CookieService],

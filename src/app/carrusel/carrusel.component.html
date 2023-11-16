@@ -1,7 +1,7 @@
 <div class="card mx-6 my-5">
     <p-carousel [value]="products" [numVisible]="2" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
         <ng-template let-product pTemplate="item">
-            <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+            <div class="border-1 surface-border border-round m-2 text-center">
                 <div class="mb-3">
                     <img src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.image }}" [alt]="product.name" class="w-6 shadow-2" />
                 </div>

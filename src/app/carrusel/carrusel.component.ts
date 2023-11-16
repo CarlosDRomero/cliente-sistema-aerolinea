@@ -24,7 +24,7 @@ export class CarruselComponent {
     },
     {
       image: "assets/img/product2.jpg",
-      name: "Producto 2",
+      name: "Producto 2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       price: "$30",
       inventoryStatus: "OUTSTOK"
     },

@@ -7,9 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./buttlogin.component.css']
 })
 export class ButtloginComponent {
-constructor(private router: Router){
+constructor(protected router: Router){
 }
-  redirection(){
-    this.router.navigate(["/signup"])
-  }
 }

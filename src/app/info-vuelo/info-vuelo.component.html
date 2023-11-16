@@ -1,30 +1,30 @@
-<div class="flex align-items-center justify-content-center font-bold m-5 px-0.5 py-0.5 border-round">
-    <p-panel header={{vuelo.nombre_aerolinea}} [toggleable]="true" class="custom-panel">
-        
-        <div class="card flex">
-            <div class="flex flex-column">
-                <p class="flex align-items-center justify-content-center  font-bold border-round m-1">ORIGEN</p>
-                <p class="flex align-items-center justify-content-center border-round m-1">{{ vuelo.origen?.city_name }}</p>
-                <p class="flex align-items-center justify-content-center border-round m-1">{{ vuelo.origen?.country_name }}</p>
-                <p class="flex align-items-center justify-content-center  font-bold border-round m-1">Aeropuerto</p>
-                <p class="flex align-items-center justify-content-center border-round m-1">{{ vuelo.nombre_aerolinea }}</p>
-            </div>
-            <p-divider layout="vertical"></p-divider>
-            <div class="flex flex-column">
-                <p-button icon="pi pi-send" [rounded]="true" [text]="true" severity="help" class="p-button-x"></p-button>
-                <p class="flex align-items-center justify-content-center  font-bold border-round m-1">Precio del Vuelo</p>
-                <p class="flex align-items-center justify-content-center border-round m-1">{{ vuelo.precio }} {{vuelo.moneda}}</p>
-                <p-button icon="pi pi-shopping-cart" [rounded]="true" severity="success"></p-button>
+<div class="">
+    <p-panel header="{{ vuelo.nombre_aerolinea }} - {{vuelo.fecha_ida}}" [toggleable]="true" class="custom-panel w-full">
 
+        <div class="card flex justify-content-around">
+            <div class="flex flex-column align-items-center">
+                <p class="font-bold border-round m-1">ORIGEN</p>
+                <p class="max-width border-round m-1">{{ vuelo.origen?.city_name }}</p>
+                <p class="max-width border-round m-1">{{ vuelo.origen?.country_name }}</p>
+                <p class="font-bold border-round m-1">Aeropuerto</p>
+                <p class="max-width border-round m-1">{{ vuelo.origen?.airport_name }}</p>
             </div>
             <p-divider layout="vertical"></p-divider>
-            <div class="flex flex-column">
-                <p class="flex align-items-center justify-content-center  font-bold border-round m-1">DESTINO</p>
-                <p class="flex align-items-center justify-content-center border-round m-1">{{ vuelo.destino?.city_name }}</p>
-                <p class="flex align-items-center justify-content-center border-round m-1">{{ vuelo.destino?.country_name }}</p>
-                <p class="flex align-items-center justify-content-center  font-bold border-round m-1">Aeropuerto</p>
-                <p class="flex align-items-center justify-content-center border-round m-1">{{ vuelo.nombre_aerolinea }}</p>
+            <div class="flex flex-column align-items-center">
+                <p-button icon="pi pi-send" [rounded]="true" [text]="true" severity="help" class="p-button-x"></p-button>
+                <p class="font-bold border-round m-1">Precio del Vuelo</p>
+                <p class="max-width border-round m-1">{{ vuelo.precio }} {{ vuelo.moneda }}</p>
+                <p-button icon="pi pi-shopping-cart" [rounded]="true" severity="success"></p-button>
+            </div>
+            <p-divider layout="vertical"></p-divider>
+            <div class="flex flex-column align-items-center">
+                <p class="font-bold border-round m-1">DESTINO</p>
+                <p class="max-width border-round m-1">{{ vuelo.destino?.city_name }}</p>
+                <p class="max-width border-round m-1">{{ vuelo.destino?.country_name }}</p>
+                <p class="font-bold border-round m-1">Aeropuerto</p>
+                <p class="max-width border-round m-1">{{ vuelo.destino?.airport_name }}</p>
             </div>
         </div>
+
     </p-panel>
 </div>
