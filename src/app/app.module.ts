@@ -28,7 +28,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { ImageModule } from 'primeng/image';
 import { TableModule } from 'primeng/table';
 import { PanelModule } from 'primeng/panel';
-
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
 
 // Componentes creados
 import { FormularioVerificacionComponent } from './formulario-verificacion/formulario-verificacion.component';
@@ -88,7 +89,9 @@ import { InfoVueloComponent } from './info-vuelo/info-vuelo.component';
     TabViewModule,
     ImageModule,
     TableModule,
-    PanelModule
+    PanelModule,
+    AvatarModule,
+    AvatarGroupModule
   ],
 
   providers: [CookieService],
